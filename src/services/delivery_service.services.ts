@@ -10,16 +10,13 @@ class DeliveryService {
      *  @memberof DeliveryServiceController
      */
     static async calculateuUserExpectedPay(pickup_addr: string, dropoff_addr: string, delivery_type: string) {
-        data.map(d => {
-            if (d.pickup_addr === pickup_addr && d.dropoff_addr === dropoff_addr && delivery_type === 'Regular') {
-                    let totalPriceDelivery = d.pricing * 1;
-                    return totalPriceDelivery;
-                } else if (d.pickup_addr === pickup_addr && d.dropoff_addr === dropoff_addr && delivery_type === 'Express') {
-                    let totalPriceDelivery = d.pricing * 2;
-                    return totalPriceDelivery
+        for (const d of data) {
+                if (pickup_addr == d.pickup_addr && dropoff_addr == d.dropoff_addr && delivery_type == "Regular"){
+                    return d.pricing;
+                } else if (pickup_addr == d.pickup_addr && dropoff_addr == d.dropoff_addr && delivery_type == "Express") {
+                    return d.pricing * 2;
                 }
-        })
-        console.log(data);
+        }
     }
 }
 

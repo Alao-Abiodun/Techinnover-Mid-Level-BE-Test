@@ -12,8 +12,9 @@ class DeliveryServiceController {
      */
     static async userPay(req: any, res: any) {
         const {pickup_addr, dropoff_addr, delivery_type} = req.body;
-        const results = deliveryService.calculateuUserExpectedPay(pickup_addr, dropoff_addr, delivery_type);
-        return res.status(200).json({ results });
+        const results = await deliveryService.calculateuUserExpectedPay(pickup_addr, dropoff_addr, delivery_type);
+        return res.status(200).json({ results })
+        // console.log(results);
     }
 }
 
